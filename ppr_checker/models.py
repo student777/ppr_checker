@@ -8,7 +8,7 @@ class Category(models.Model):
         return self.name
 
 
-class Good(models.Model):
+class Goods(models.Model):
     name = models.CharField(max_length=45)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
@@ -32,11 +32,13 @@ class Shop(models.Model):
 
 class Deal(models.Model):
     price = models.PositiveIntegerField()
-    good = models.ForeignKey(Good, on_delete=models.CASCADE)
+    content = models.CharField(max_length=255)
+    is_available = models.BooleanField(default=True)
+    goods = models.ForeignKey(Goods, on_delete=models.CASCADE)
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE)
     image = models.ImageField(blank=True, null=True)
     timestamp = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.good.name + str(self.price) + self.unit.name
+        return self.goods.name + str(self.price) + self.unit.name

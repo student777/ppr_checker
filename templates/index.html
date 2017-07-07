@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	<style>
+		html, body {height: 100%;}
+	</style>
+</head>
+<body>
+	<div class="h-50 d-flex align-items-center">
+		<div class="container text-center">
+			<img src="/static/img/logo.png" class="img-fluid">
+			<form action="/">
+				<div class="form-group">
+					<input class="form-control" name="name" placeholder="ex)신라면" required>
+					<button type="submit" class="btn btn-primary">체크!</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	{% if goods_deals != None%}
+	<div class="container">
+		<div>
+			{% for goods, deals in goods_deals %}
+			{{goods}}
+			{% for deal in deals %}
+			{{deal}}
+			{% empty %}
+			no deals 
+			{% endfor %}
+			{% empty %}
+			no results
+			{% endfor %}
+		</div>
+	</div>
+	{% endif%}
+
+</div>
+</body>
+
+
+
+</html>
